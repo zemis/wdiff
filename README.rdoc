@@ -4,8 +4,8 @@ Simple wrapper around GNU wdiff (http://www.gnu.org/software/wdiff/)
 
 == Usage
 
-  'this is a test'.wdiff('this is another test') # => 'this is [-a-] {+another+} test'
-   Wdiff::Helper.to_html('this is a test'.wdiff('this is another test')) # => 'this is <span class="out">a</span> <span class="in">another</span> test'
+'this is a test'.wdiff('this is another test') # => 'this is [-a-] {+another+} test'
+Wdiff::Helper.to_html('this is a test'.wdiff('this is another test')) # => 'this is <span class="out">a</span> <span class="in">another</span> test'
 
 == Contributing to wdiff
  
