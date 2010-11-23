@@ -1,3 +1,4 @@
+require 'tempfile'
 module Wdiff
   class << self
     def included(target)
@@ -13,9 +14,12 @@ module Wdiff
   end
 
   def wdiff(str_new)
-    cmd = "bash -c '#{Wdiff::bin_path} <(echo \"#{self}\") <(echo \"#{str_new}\")'"
-    raw = %x{#{cmd}}
-    raw.chop unless raw.nil?
+    f1, f2 = Tempfile.new('f1'), Tempfile.new('f2')
+    f1.write(self); f1.flush
+    f2.write(str_new); f2.flush
+    raw = %x{#{Wdiff::bin_path} #{f1.path} #{f2.path}}
+    f1.close; f2.close
+    raw
   end
   
   module Helper
