@@ -41,3 +41,4 @@ pkg
 # For vim:
 #*.swp
 Gemfile.lock
+wdiff.gemspec
