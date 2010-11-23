@@ -20,7 +20,7 @@ module Wdiff
   
   module Helper
     def self.to_html(str)
-      str.gsub(/\[\-/,'<span class="out">').gsub(/\{\+/,'<span class="in">').gsub(/\+\}|\-\]/,'</span>')
+      str.gsub(/\[\-/,'<del>').gsub(/\-\]/,'</del>').gsub(/\{\+/,'<ins>').gsub(/\+\}/,'</ins>')
     end
   end
 end

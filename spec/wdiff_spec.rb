@@ -6,7 +6,7 @@ describe "Wdiff" do
   end
 
   it "should return the HTML diff of two strings" do
-    Wdiff::Helper.to_html('this is a test'.wdiff('this is another test')).should == 'this is <span class="out">a</span> <span class="in">another</span> test'
+    Wdiff::Helper.to_html('this is a test'.wdiff('this is another test')).should == 'this is <del>a</del> <ins>another</ins> test'
   end
 
   it "should raise error if xdiff is not in $PATH" do
