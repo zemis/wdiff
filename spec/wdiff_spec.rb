@@ -5,6 +5,14 @@ describe "Wdiff" do
     'this is a test'.wdiff('this is another test').should == 'this is [-a-] {+another+} test'
   end
 
+  it "should allow overriding the delete regions" do
+    'this is a test'.wdiff('this is another test', :deletes => ["<del>", "</del>"]).should == 'this is <del>a</del> {+another+} test'
+  end
+
+  it "should allow overriding the insert regions" do
+    'this is a test'.wdiff('this is another test', :inserts => ["<ins>", "</ins>"]).should == 'this is [-a-] <ins>another</ins> test'
+  end
+
   it "should return the HTML diff of two strings" do
     Wdiff::Helper.to_html('this is a test'.wdiff('this is another test')).should == 'this is <del>a</del> <ins>another</ins> test'
   end
