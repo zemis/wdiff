@@ -32,16 +32,20 @@ module Wdiff
 
       parts.join(" ")
     end
+
+    def diff(old_str, new_str, options={})
+      f1, f2 = Tempfile.new('f1'), Tempfile.new('f2')
+      f1.write(old_str); f1.flush
+      f2.write(new_str); f2.flush
+      opt_str = options_string_from_hash(options)
+      raw = %x{#{bin_path} #{opt_str} #{f1.path} #{f2.path}}
+      f1.close; f2.close
+      raw
+    end
   end
 
   def wdiff(str_new, options={})
-    f1, f2 = Tempfile.new('f1'), Tempfile.new('f2')
-    f1.write(self); f1.flush
-    f2.write(str_new); f2.flush
-    opt_str = Wdiff::options_string_from_hash(options)
-    raw = %x{#{Wdiff::bin_path} #{opt_str} #{f1.path} #{f2.path}}
-    f1.close; f2.close
-    raw
+    Wdiff::diff(self, str_new, options)
   end
 
   module Helper
