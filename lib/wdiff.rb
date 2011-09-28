@@ -18,18 +18,19 @@ module Wdiff
     def options_string_from_hash(options={})
       parts = []
 
-      if options[:deletes]
-        start_range, end_range = options[:deletes]
-        parts << %Q(--start-delete="#{start_range}")
-        parts << %Q(--end-delete="#{end_range}")
-      end
+      options[:inserts].each_with_index do |token, index|
+        token.gsub!(/^\"$/,'\"') if token == '"'
+        parts << ( index.even? ?  %Q(--start-insert="#{token}")  :  %Q(--end-insert="#{token}") )
+        break if index >= 1
+      end if options[:inserts]
 
-      if options[:inserts]
-        start_range, end_range = options[:inserts]
-        parts << %Q(--start-insert="#{start_range}")
-        parts << %Q(--end-insert="#{end_range}")
-      end
-
+      
+      options[:deletes].each_with_index do |token, index|
+        token.gsub!(/^\"$/,'\"') if token == '"'
+        parts << ( index.even? ?  %Q(--start-delete="#{token}")  :  %Q(--end-delete="#{token}") )
+        break if index >= 1
+      end if options[:deletes]
+      
       parts.join(" ")
     end
 
@@ -49,8 +50,8 @@ module Wdiff
   end
 
   module Helper
-    def self.to_html(str)
-      str.gsub(/\[\-/,'<del>').gsub(/\-\]/,'</del>').gsub(/\{\+/,'<ins>').gsub(/\+\}/,'</ins>')
+    def self.to_html(old_str,new_str)
+      Wdiff::diff(old_str, new_str, :inserts => ["<ins>", "</ins>"], :deletes => ["<del>", "</del>"])
     end
   end
 end

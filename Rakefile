@@ -13,7 +13,7 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "wdiff"
-  gem.homepage = "http://github.com/jriga/wdiff"
+  gem.homepage = "http://github.com/zemis/wdiff"
   gem.license = "MIT"
   gem.summary = %Q{adds the wdiff method to String instance}
   gem.description = %Q{string word diff with other string; Wdiff::Helper.to_html transforms diff string in html snippet}

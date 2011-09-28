@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "wdiff"
-  s.version = "0.1.2"
+  s.name = %q{wdiff}
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Jerome Riga"]
-  s.date = "2011-09-22"
-  s.description = "string word diff with other string; Wdiff::Helper.to_html transforms diff string in html snippet"
-  s.email = "jriga@zemis.co.uk"
+  s.authors = [%q{Jerome Riga}]
+  s.date = %q{2011-09-28}
+  s.description = %q{string word diff with other string; Wdiff::Helper.to_html transforms diff string in html snippet}
+  s.email = %q{jriga@zemis.co.uk}
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -26,13 +26,14 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/wdiff.rb",
     "spec/spec_helper.rb",
-    "spec/wdiff_spec.rb"
+    "spec/wdiff_spec.rb",
+    "wdiff.gemspec"
   ]
-  s.homepage = "http://github.com/jriga/wdiff"
-  s.licenses = ["MIT"]
-  s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
-  s.summary = "adds the wdiff method to String instance"
+  s.homepage = %q{http://github.com/zemis/wdiff}
+  s.licenses = [%q{MIT}]
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.6}
+  s.summary = %q{adds the wdiff method to String instance}
   s.test_files = [
     "spec/spec_helper.rb",
     "spec/wdiff_spec.rb"
