@@ -39,9 +39,12 @@ module Wdiff
       f1.write(old_str); f1.flush
       f2.write(new_str); f2.flush
       opt_str = options_string_from_hash(options)
-      raw = %x{#{bin_path} #{opt_str} #{f1.path} #{f2.path}}
-      f1.close; f2.close
-      raw
+      %x{#{bin_path} #{opt_str} #{f1.path} #{f2.path}}
+    ensure
+      f1.close
+      f1.unlink
+      f2.close
+      f2.unlink
     end
   end
 
