@@ -19,6 +19,7 @@ Simple wrapper around GNU wdiff (http://www.gnu.org/software/wdiff/)
 
 == Contributors
 - Richard Livsey
+- Christos Trochalakis
 
 == Copyright
 
